@@ -5,11 +5,12 @@ else
 endif
 " Plugins List
 call plug#begin(g:plugged_home)
+  " Easy comment
+  Plug 'tpope/vim-commentary'
   " UI related
   Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " Plug 'tomasr/molakai'
   Plug 'joshdick/onedark.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
@@ -80,7 +81,7 @@ augroup NCM2
   set completeopt=noinsert,menuone,noselect
   " When the <Enter> key is pressed while the popup menu is visible, it only
   " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+  inoremap <expr> <Tab> (pumvisible() ? "\<c-y>\<Space>" : "\<Space>")
   " uncomment this block if you use vimtex for LaTex
   " autocmd Filetype tex call ncm2#register_source({
   "           \ 'name': 'vimtex',
