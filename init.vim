@@ -153,3 +153,10 @@ let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 " Set to 1, the preview server will be available to others in your network.
 " By default, the server only listens on localhost (127.0.0.1).
+
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+endif
+
