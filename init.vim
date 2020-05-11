@@ -11,7 +11,8 @@ call plug#begin(g:plugged_home)
   Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'joshdick/onedark.vim'
+  Plug 'herrbischoff/cobalt2.vim'
+  " Plug 'joshdick/onedark.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
   " syntax check
@@ -43,8 +44,8 @@ syntax enable
 " colorscheme
 let base16colorspace=256
 " colorscheme base16-gruvbox-dark-hard
-silent! colorscheme onedark
-set background=dark
+silent! colorscheme cobalt2
+" set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
     set termguicolors
