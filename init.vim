@@ -33,6 +33,15 @@ call plug#begin(g:plugged_home)
   " Markdown preview
   Plug 'iamcco/mathjax-support-for-mkdp'
   Plug 'iamcco/markdown-preview.vim'
+  " Markdown syntax highlighting, matching rules
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
+  " Control P Fuzzy Find 
+  Plug 'ctrlpvim/ctrlp.vim'
+  " Indentation guide
+  Plug 'nathanaelkane/vim-indent-guides'
+  " Tmux integration, use vim commands in tmux
+  Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 filetype plugin indent on
@@ -67,10 +76,7 @@ set nowritebackup
 " Search configuration
 set ignorecase                    " ignore case when searching
 set smartcase                     " turn on smartcase
-" Tab and Indent configuration
-set expandtab
-set tabstop=4
-set shiftwidth=4
+set hlsearch
 " vim-autoformat
 noremap <F3> :Autoformat<CR>
 " NCM2
@@ -160,3 +166,17 @@ else
     " ordinary neovim
 endif
 
+" CtrlP setting
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
+" Tab and Indent configuration
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+" <C-Enter>     Insert single / [count] newline.
+nnoremap s i<CR><Esc>
