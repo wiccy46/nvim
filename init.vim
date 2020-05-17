@@ -42,6 +42,8 @@ call plug#begin(g:plugged_home)
   Plug 'nathanaelkane/vim-indent-guides'
   " Tmux integration, use vim commands in tmux
   Plug 'christoomey/vim-tmux-navigator'
+  " Git
+  Plug 'tpope/vim-fugitive'
 
 call plug#end()
 filetype plugin indent on
