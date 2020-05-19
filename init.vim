@@ -85,7 +85,7 @@ noremap <F3> :Autoformat<CR>
 augroup NCM2
   autocmd!
   " enable ncm2 for all buffers
-  autocmd BufEnter * call ncm2#enable_for_buffer()
+  autocmd InsertEnter * call ncm2#enable_for_buffer()
   " :help Ncm2PopupOpen for more information
   set completeopt=noinsert,menuone,noselect
   " When the <Enter> key is pressed while the popup menu is visible, it only
