@@ -6,5 +6,8 @@ nnoremap <Space> <Nop>
 " Alternate way to save
 nnoremap <silent> <C-s> :w<CR>
 
+" NERDTree.vim mapping.vim
+nnoremap <Leader>f :NERDTreeToggle<Enter>
 
-"Tjhois dsandjkla
+
+

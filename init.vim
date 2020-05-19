@@ -1,6 +1,5 @@
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
-
 if has('win32') || has('win64')
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
 else
@@ -88,9 +87,9 @@ set nowritebackup
 set ignorecase                    " ignore case when searching
 set smartcase                     " turn on smartcase
 set hlsearch
+
 " vim-autoformat
 noremap <leader>af :Autoformat<CR>
-
 
 if exists('g:vscode')
     " VSCode extension
@@ -105,25 +104,15 @@ set expandtab
 set autoindent
 set smartindent
 
-
 " <C-Enter>     Insert single / [count] newline.
 nnoremap s i<CR><Esc>
 
-" ---------LOAD CONFIGS ---------------------------"
-
-" CTRL-P
+" ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
-" Airline
 source $HOME/.config/nvim/plug-config/Airline.vim
-
-" Ale
 source $HOME/.config/nvim/plug-config/Ale.vim
-
-" NERDTree
 source $HOME/.config/nvim/plug-config/NERDTree.vim
-" Autocomplete ncm2 config
 source $HOME/.config/nvim/plug-config/ncm2.vim
-" Markdown preview config
 source $HOME/.config/nvim/plug-config/markdown-preview.vim
-" Floaterm, floating terminal in VIM
 source $HOME/.config/nvim/plug-config/floaterm.vim
+
