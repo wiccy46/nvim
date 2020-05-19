@@ -1,9 +1,11 @@
+" Load key mapping and which key. 
+
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
 if has('win32') || has('win64')
   let g:plugged_home = '~/AppData/Local/nvim/plugged'
 else
-  let g:plugged_home = '~/.vim/plugged'
+  let g:plugged_home = '~/.config/nvim/plugged'
 endif
 " Plugins List
 call plug#begin(g:plugged_home)
@@ -19,19 +21,17 @@ call plug#begin(g:plugged_home)
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
-  " Autocomplete
+  " " Autocomplete
   Plug 'ncm2/ncm2'
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
+  " Python completion
   Plug 'ncm2/ncm2-jedi'
   " Formater
   Plug 'Chiel92/vim-autoformat'
   " File explorer
   Plug 'preservim/nerdtree'
-  " Markdown preview
-  Plug 'iamcco/mathjax-support-for-mkdp'
-  Plug 'iamcco/markdown-preview.vim'
   " Markdown syntax highlighting, matching rules
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
@@ -41,8 +41,6 @@ call plug#begin(g:plugged_home)
   Plug 'nathanaelkane/vim-indent-guides'
   " Tmux integration, use vim commands in tmux
   Plug 'christoomey/vim-tmux-navigator'
-  " Git
-  Plug 'tpope/vim-fugitive'
   " Show key-binding
   Plug 'liuchengxu/vim-which-key'
   " Floatterm, using terminal within vim
@@ -87,6 +85,8 @@ set nowritebackup
 set ignorecase                    " ignore case when searching
 set smartcase                     " turn on smartcase
 set hlsearch
+" Let copy paste to external 
+set clipboard=unnamedplus
 
 " vim-autoformat
 noremap <leader>af :Autoformat<CR>
@@ -113,6 +113,5 @@ source $HOME/.config/nvim/plug-config/Airline.vim
 source $HOME/.config/nvim/plug-config/Ale.vim
 source $HOME/.config/nvim/plug-config/NERDTree.vim
 source $HOME/.config/nvim/plug-config/ncm2.vim
-source $HOME/.config/nvim/plug-config/markdown-preview.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
 
