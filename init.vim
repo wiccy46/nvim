@@ -1,4 +1,4 @@
-" Load key mapping and which key. 
+ " Load key mapping and which key. 
 
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
@@ -27,7 +27,7 @@ call plug#begin(g:plugged_home)
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
   " Python completion
-  Plug 'ncm2/ncm2-jedi'
+  " Plug 'ncm2/ncm2-jedi'
   " Formater
   Plug 'Chiel92/vim-autoformat'
   " File explorer
@@ -62,6 +62,7 @@ syntax enable
 let base16colorspace=256
 " colorscheme base16-gruvbox-dark-hard
 silent! colorscheme cobalt2
+hi Normal guibg=NONE ctermbg=NONE
 " set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
