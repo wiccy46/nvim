@@ -40,6 +40,15 @@ call plug#begin(g:plugged_home)
   Plug 'voldikss/vim-floaterm'
   " Using gruvbox theme
   Plug 'morhetz/gruvbox' 
+  " Audo completion with Deoplete For Python Kite is used
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 filetype plugin indent on
@@ -101,6 +110,18 @@ set smartindent
 
 " <C-Enter>     Insert single / [count] newline.
 nnoremap s i<CR><Esc>
+
+" Tmux - Vim - navigator
+let g:tmux_navigator_no_mappings = 1 
+
+nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
+nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
+nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
+nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
+nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
+
+" Enable deoplete
+let g:deoplete#enable_at_startup = 1
 
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
