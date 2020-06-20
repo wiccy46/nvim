@@ -26,8 +26,13 @@ call plug#begin(g:plugged_home)
   Plug 'roxma/nvim-yarp'
   Plug 'ncm2/ncm2-bufword'
   Plug 'ncm2/ncm2-path'
-  " Python completion
-  Plug 'ncm2/ncm2-jedi'
+  " Python completion, commented since I started using kite
+  " Plug 'ncm2/ncm2-jedi'
+  " vim script completion
+  Plug 'ncm2/ncm2-vim'
+  " Subscope detection: markdown
+  Plug 'ncm2/ncm2-markdown-subscope'
+  " ---------- End Autocomplete here "
   " Formater
   Plug 'Chiel92/vim-autoformat'
   " File explorer
@@ -45,6 +50,8 @@ call plug#begin(g:plugged_home)
   Plug 'liuchengxu/vim-which-key'
   " Floatterm, using terminal within vim
   Plug 'voldikss/vim-floaterm'
+  " Using gruvbox theme
+  Plug 'morhetz/gruvbox' 
 
 call plug#end()
 filetype plugin indent on
@@ -61,7 +68,6 @@ syntax enable
 " colorscheme
 let base16colorspace=256
 " colorscheme base16-gruvbox-dark-hard
-silent! colorscheme cobalt2
 " set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
@@ -70,6 +76,7 @@ endif
 if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
+colorscheme gruvbox
 set number
 set relativenumber
 set hidden
