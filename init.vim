@@ -21,23 +21,6 @@ call plug#begin(g:plugged_home)
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
-  " " Autocomplete
-  Plug 'ncm2/ncm2'
-  Plug 'roxma/nvim-yarp'
-  Plug 'ncm2/ncm2-bufword'
-  Plug 'ncm2/ncm2-path'
-<<<<<<< HEAD
-  " Python completion, commented since I started using kite
-  " Plug 'ncm2/ncm2-jedi'
-  " vim script completion
-  Plug 'ncm2/ncm2-vim'
-  " Subscope detection: markdown
-  Plug 'ncm2/ncm2-markdown-subscope'
-  " ---------- End Autocomplete here "
-=======
-  " Python completion
-  " Plug 'ncm2/ncm2-jedi'
->>>>>>> 55c08a2b7e42823338ca3c21d9a907aae8b42b2d
   " Formater
   Plug 'Chiel92/vim-autoformat'
   " File explorer
@@ -73,11 +56,6 @@ syntax enable
 " colorscheme
 let base16colorspace=256
 " colorscheme base16-gruvbox-dark-hard
-<<<<<<< HEAD
-=======
-silent! colorscheme cobalt2
-hi Normal guibg=NONE ctermbg=NONE
->>>>>>> 55c08a2b7e42823338ca3c21d9a907aae8b42b2d
 " set background=dark
 " True Color Support if it's avaiable in terminal
 if has("termguicolors")
@@ -129,6 +107,5 @@ source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
 source $HOME/.config/nvim/plug-config/Ale.vim
 source $HOME/.config/nvim/plug-config/NERDTree.vim
-source $HOME/.config/nvim/plug-config/ncm2.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
 
