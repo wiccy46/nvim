@@ -102,6 +102,9 @@ set smartindent
 " <C-Enter>     Insert single / [count] newline.
 nnoremap s i<CR><Esc>
 
+" Remove trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
