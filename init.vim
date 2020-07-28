@@ -1,4 +1,4 @@
- " Load key mapping and which key. 
+ " Load key mapping and which key.
 
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
@@ -28,7 +28,7 @@ call plug#begin(g:plugged_home)
   " Markdown syntax highlighting, matching rules
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
-  " Control P Fuzzy Find 
+  " Control P Fuzzy Find
   Plug 'ctrlpvim/ctrlp.vim'
   " Indentation guide
   Plug 'nathanaelkane/vim-indent-guides'
@@ -39,7 +39,9 @@ call plug#begin(g:plugged_home)
   " Floatterm, using terminal within vim
   Plug 'voldikss/vim-floaterm'
   " Using gruvbox theme
-  Plug 'morhetz/gruvbox' 
+  " Plug 'morhetz/gruvbox'
+  " Using Ayu thme
+  Plug 'ayu-theme/ayu-vim'
   " " Audo completion with Deoplete For Python Kite is used
   " if has('nvim')
   "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -73,7 +75,8 @@ endif
 if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
-colorscheme gruvbox
+let ayucolor="dark"
+colorscheme ayu
 set number
 set relativenumber
 set hidden
@@ -89,7 +92,7 @@ set nowritebackup
 set ignorecase                    " ignore case when searching
 set smartcase                     " turn on smartcase
 set hlsearch
-" Let copy paste to external 
+" Let copy paste to external
 set clipboard=unnamedplus
 
 " vim-autoformat
