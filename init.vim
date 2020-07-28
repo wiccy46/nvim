@@ -124,3 +124,6 @@ source $HOME/.config/nvim/plug-config/Ale.vim
 source $HOME/.config/nvim/plug-config/NERDTree.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
 
+
+highlight Normal guibg=none
+highlight NonText guibg=none
