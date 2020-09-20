@@ -16,15 +16,12 @@ call plug#begin(g:plugged_home)
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'herrbischoff/cobalt2.vim'
-  " Plug 'joshdick/onedark.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
   " syntax check
   Plug 'w0rp/ale'
   " Formater
   Plug 'Chiel92/vim-autoformat'
-  " File explorer
-  Plug 'preservim/nerdtree'
   " Markdown syntax highlighting, matching rules
   Plug 'godlygeek/tabular'
   Plug 'plasticboy/vim-markdown'
@@ -42,16 +39,8 @@ call plug#begin(g:plugged_home)
   " Plug 'morhetz/gruvbox'
   " Using Ayu thme
   Plug 'ayu-theme/ayu-vim'
-  " " Audo completion with Deoplete For Python Kite is used
-  " if has('nvim')
-  "   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  " else
-  "   Plug 'Shougo/deoplete.nvim'
-  "   Plug 'roxma/nvim-yarp'
-  "   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" let g:deoplete#enable_at_startup = 1
-
+  " Use release branch (recommend)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -94,7 +83,18 @@ set smartcase                     " turn on smartcase
 set hlsearch
 " Let copy paste to external
 set clipboard=unnamedplus
+" Set cursor color
+" " Enable CursorLine
+set cursorline
 
+" " Default Colors for CursorLine
+" highlight  CursorLine ctermbg=Yellow ctermfg=None
+
+" " Change Color when entering Insert Mode
+" autocmd InsertEnter * highlight  CursorLine ctermbg=Green ctermfg=Red
+
+" " Revert Color to default when leaving Insert Mode
+" autocmd InsertLeave * highlight  CursorLine ctermbg=Yellow ctermfg=None
 " vim-autoformat
 noremap <leader>af :Autoformat<CR>
 
@@ -121,9 +121,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
 source $HOME/.config/nvim/plug-config/Ale.vim
-source $HOME/.config/nvim/plug-config/NERDTree.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
+source $HOME/.config/nvim/plug-config/Coc.vim
 
 
 highlight Normal guibg=none
 highlight NonText guibg=none
+
+
+
