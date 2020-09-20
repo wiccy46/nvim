@@ -111,6 +111,9 @@ set expandtab
 set autoindent
 set smartindent
 
+" LineNr Color
+hi LineNr guifg=#dbdbdb
+
 " <C-Enter>     Insert single / [count] newline.
 nnoremap s i<CR><Esc>
 
