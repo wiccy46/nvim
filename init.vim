@@ -128,5 +128,3 @@ source $HOME/.config/nvim/plug-config/Coc.vim
 highlight Normal guibg=none
 highlight NonText guibg=none
 
-
-
