@@ -36,11 +36,14 @@ call plug#begin(g:plugged_home)
   " Floatterm, using terminal within vim
   Plug 'voldikss/vim-floaterm'
   " Using gruvbox theme
-  " Plug 'morhetz/gruvbox'
+  Plug 'morhetz/gruvbox'
   " Using Ayu thme
-  Plug 'ayu-theme/ayu-vim'
+  " Plug 'ayu-theme/ayu-vim'
   " Use release branch (recommend)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'davidhalter/jedi-vim'
+  " YAML support
+  Plug 'mrk21/yaml-vim'
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -64,8 +67,8 @@ endif
 if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
-let ayucolor="dark"
-colorscheme ayu
+" let ayucolor="dark"
+colorscheme gruvbox
 set number
 set relativenumber
 set hidden
@@ -119,6 +122,13 @@ nnoremap s i<CR><Esc>
 
 " Remove trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
+
+" tabs control
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
 
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim

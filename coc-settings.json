@@ -1,15 +1,21 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql", "html", "yaml",  "json", "python"],
+  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "javascript", "graphql", "html", "json", "python"],
 
-  // python config
   "python.linting.enabled": true,
   "python.linting.pylintEnabled": true,
+  "python.venvFolders":
+  [
+    "/Users/jiajun.yang/Holoplot/sw__magma/magma/venv"
+  ],
 
   "snippets.ultisnips.directories":
   [
     "UltiSnips",
     "~/.config/nvim/utils/snips"
-  ]
+  ],
+
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false
 
 }
 
