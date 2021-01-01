@@ -44,6 +44,10 @@ call plug#begin(g:plugged_home)
   Plug 'davidhalter/jedi-vim'
   " YAML support
   Plug 'mrk21/yaml-vim'
+  " C++ syntaxt
+  Plug 'jackguo380/vim-lsp-cxx-highlight'
+  Plug 'vim-syntastic/syntastic'
+
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -130,6 +134,18 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+" c++ syntax highlighting
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_c_checkers = ['cpplint']
+let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" The following two lines are optional. Configure it to your liking!
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
@@ -141,3 +157,5 @@ source $HOME/.config/nvim/plug-config/Coc.vim
 highlight Normal guibg=none
 highlight NonText guibg=none
 
+au BufNewFile,BufRead Jenkinsfile setf groovy
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
