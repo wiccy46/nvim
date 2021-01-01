@@ -1,7 +1,6 @@
 {
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
-    "python.condaPath": "conda",
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "~/.config/nvim/utils/snips"
