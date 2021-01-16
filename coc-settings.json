@@ -26,5 +26,6 @@
                 "highlight": {"lsRanges": true}
             }
         }
-    }
+    },
+    "clangd.enabled": true
 }
