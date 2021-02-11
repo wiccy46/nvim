@@ -41,12 +41,13 @@ call plug#begin(g:plugged_home)
   " Plug 'ayu-theme/ayu-vim'
   " Use release branch (recommend)
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'davidhalter/jedi-vim'
   " YAML support
   Plug 'mrk21/yaml-vim'
   " C++ syntaxt
   Plug 'jackguo380/vim-lsp-cxx-highlight'
   Plug 'vim-syntastic/syntastic'
+  " Auto brackets pairing
+  Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 filetype plugin indent on
@@ -158,4 +159,6 @@ highlight Normal guibg=none
 highlight NonText guibg=none
 
 au BufNewFile,BufRead Jenkinsfile setf groovy
+au BufNewFile,BufRead *.Jenkinsfile setf groovy
 let g:syntastic_python_pylint_post_args="--max-line-length=120"
+nmap <space>e :CocCommand explorer<CR>
