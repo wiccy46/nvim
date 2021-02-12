@@ -118,6 +118,10 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set smartindent
+" Dont hide quotation marks in json
+autocmd Filetype json
+  \ let g:indentLine_setConceal = 0 |
+  \ let g:vim_json_syntax_conceal = 0
 
 " LineNr Color
 hi LineNr guifg=#dbdbdb
