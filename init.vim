@@ -35,6 +35,8 @@ call plug#begin(g:plugged_home)
   Plug 'liuchengxu/vim-which-key'
   " Floatterm, using terminal within vim
   Plug 'voldikss/vim-floaterm'
+  " OneDark
+  Plug 'joshdick/onedark.vim'
   " Using gruvbox theme
   Plug 'morhetz/gruvbox'
   " Using Ayu thme
@@ -48,7 +50,8 @@ call plug#begin(g:plugged_home)
   Plug 'vim-syntastic/syntastic'
   " Auto brackets pairing
   Plug 'jiangmiao/auto-pairs'
-
+  " JS highlight
+  Plug 'yuezk/vim-js'
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -122,12 +125,22 @@ set smartindent
 autocmd Filetype json
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
+augroup FileTypeSpecificAutocommands
+    autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType php setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
 
 " LineNr Color
 hi LineNr guifg=#dbdbdb
 
 " <C-Enter>     Insert single / [count] newline.
 nnoremap s i<CR><Esc>
+
+" Allow pasting the previous yanked content
+" Pates-gotoprevious-visualmode-yankthat
+xnoremap p pgvy
+
 
 " Remove trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
