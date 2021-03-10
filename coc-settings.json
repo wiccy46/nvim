@@ -26,6 +26,12 @@
                 "highlight": {"lsRanges": true}
             }
         }
+
+
     },
-    "clangd.enabled": true
+    "clangd.enabled": true,
+    "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+    "diagnostic.errorSign": "•",
+    "diagnostic.warningSign": "•",
+    "diagnostic.infoSign": "•"
 }
