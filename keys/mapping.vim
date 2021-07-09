@@ -7,7 +7,7 @@ nnoremap <Space> <Nop>
 nnoremap <silent> <C-s> :w<CR>
 
 " NERDTree.vim mapping.vim
-nnoremap <Leader>f :NERDTreeToggle<Enter>
+nnoremap <Leader>e :NERDTreeToggle<Enter>
 
 
 

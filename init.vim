@@ -18,13 +18,16 @@ call plug#begin(g:plugged_home)
   Plug 'herrbischoff/cobalt2.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
-  " syntax check
-  Plug 'w0rp/ale'
+  " LSP
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'hrsh7th/nvim-compe'
+  Plug 'kabouzeid/nvim-lspinstall'
+  " File Explorer
+  Plug 'preservim/nerdtree'
+  " " syntax check
+  " Plug 'w0rp/ale'
   " Formater
   Plug 'Chiel92/vim-autoformat'
-  " Markdown syntax highlighting, matching rules
-  Plug 'godlygeek/tabular'
-  Plug 'plasticboy/vim-markdown'
   " Control P Fuzzy Find
   Plug 'ctrlpvim/ctrlp.vim'
   " Indentation guide
@@ -39,15 +42,18 @@ call plug#begin(g:plugged_home)
   Plug 'joshdick/onedark.vim'
   " Using gruvbox theme
   Plug 'morhetz/gruvbox'
+  " Space duck
+  Plug 'sheerun/vim-polyglot'
+  Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
   " Using Ayu thme
   " Plug 'ayu-theme/ayu-vim'
-  " Use release branch (recommend)
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " " Use release branch (recommend)
+  " Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " YAML support
   Plug 'mrk21/yaml-vim'
-  " C++ syntaxt
-  Plug 'jackguo380/vim-lsp-cxx-highlight'
-  Plug 'vim-syntastic/syntastic'
+  " " C++ syntaxt
+  " Plug 'jackguo380/vim-lsp-cxx-highlight'
+  " Plug 'vim-syntastic/syntastic'
   " Auto brackets pairing
   Plug 'jiangmiao/auto-pairs'
   " JS highlight
@@ -60,7 +66,11 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-" Configurations Part
+
+"--------------------------------------------------------"
+"
+"
+" Configurations dPart
 " UI configuration
 syntax on
 syntax enable
@@ -109,11 +119,6 @@ set cursorline
 " vim-autoformat
 noremap <leader>af :Autoformat<CR>
 
-if exists('g:vscode')
-    " VSCode extension
-else
-    " ordinary neovim
-endif
 
 " Tab and Indent configuration
 set tabstop=4
@@ -152,24 +157,32 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-" c++ syntax highlighting
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
+" " c++ syntax highlighting
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
 
-let g:syntastic_cpp_checkers = ['cpplint']
-let g:syntastic_c_checkers = ['cpplint']
-let g:syntastic_cpp_cpplint_exec = 'cpplint'
-" The following two lines are optional. Configure it to your liking!
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_cpp_checkers = ['cpplint']
+" let g:syntastic_c_checkers = ['cpplint']
+" let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" " The following two lines are optional. Configure it to your liking!
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
-source $HOME/.config/nvim/plug-config/Ale.vim
+" source $HOME/.config/nvim/plug-config/Ale.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
-source $HOME/.config/nvim/plug-config/Coc.vim
+" source $HOME/.config/nvim/plug-config/Coc.vim
+source $HOME/.config/nvim/plug-config/lsp-config.vim
+luafile $HOME/.config/nvim/lua/compe-config.lua
+
+" -------------LOAD LSP _----------
+
+luafile $HOME/.config/nvim/lua/lsp-install.lua
+luafile $HOME/.config/nvim/lua/python-lsp.lua
+
 
 
 highlight Normal guibg=none
@@ -177,5 +190,4 @@ highlight NonText guibg=none
 
 au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.Jenkinsfile setf groovy
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
-nmap <space>e :CocCommand explorer<CR>
+" let g:syntastic_python_pylint_post_args="--max-line-length=120"
