@@ -169,6 +169,10 @@ nnoremap tl :tablast<CR>
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 
+" This is required by Compe
+set completeopt=menuone,noselect
+set shortmess+=c
+
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
@@ -191,3 +195,4 @@ highlight NonText guibg=none
 au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.Jenkinsfile setf groovy
 " let g:syntastic_python_pylint_post_args="--max-line-length=120"
+
