@@ -42,6 +42,7 @@ call plug#begin(g:plugged_home)
   Plug 'joshdick/onedark.vim'
   " Using gruvbox theme
   Plug 'morhetz/gruvbox'
+  Plug 'bluz71/vim-nightfly-guicolors'
   " Space duck
   Plug 'sheerun/vim-polyglot'
   Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
@@ -86,7 +87,7 @@ if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
 " let ayucolor="dark"
-colorscheme gruvbox
+colorscheme nightfly
 set number
 set relativenumber
 set hidden
