@@ -59,6 +59,8 @@ call plug#begin(g:plugged_home)
   Plug 'jiangmiao/auto-pairs'
   " JS highlight
   Plug 'yuezk/vim-js'
+  " Snippet
+  Plug 'hrsh7th/vim-vsnip'
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
