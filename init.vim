@@ -135,8 +135,12 @@ autocmd Filetype json
   \ let g:vim_json_syntax_conceal = 0
 augroup FileTypeSpecificAutocommands
     autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType ts setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType php setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " LineNr Color
