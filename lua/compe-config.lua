@@ -32,6 +32,7 @@ require'compe'.setup {
     spell = false;
     tags = false;
     treesitter = false;
+    vim_snippets = true;
   };
 }
 local t = function(str)

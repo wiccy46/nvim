@@ -59,7 +59,7 @@ call plug#begin(g:plugged_home)
   " JS highlight
   Plug 'yuezk/vim-js'
   " Snippet
-  Plug 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
   " Run test suites for various languages
   Plug 'janko/vim-test'
