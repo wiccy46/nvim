@@ -1,6 +1,4 @@
  " Load key mapping and which key.
-
-
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
 if has('win32') || has('win64')
@@ -155,6 +153,7 @@ augroup FileTypeSpecificAutocommands
     autocmd FileType jsx setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END
 
 " LineNr Color
@@ -184,6 +183,10 @@ set shortmess+=c
 
 " Vim-test
 let test#python#runner = 'pytest'
+
+let g:UltiSnipsExpandTrigger="<c-t>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 " ---------LOAD CONFIGS ---------------------------
