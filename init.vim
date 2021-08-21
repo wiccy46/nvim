@@ -1,5 +1,6 @@
  " Load key mapping and which key.
 
+
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
 if has('win32') || has('win64')
@@ -18,7 +19,7 @@ call plug#begin(g:plugged_home)
   Plug 'herrbischoff/cobalt2.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
-  " LSP
+  " " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
   Plug 'kabouzeid/nvim-lspinstall'
@@ -60,7 +61,20 @@ call plug#begin(g:plugged_home)
   " JS highlight
   Plug 'yuezk/vim-js'
   " Snippet
-  Plug 'hrsh7th/vim-vsnip'
+  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+  " Run test suites for various languages
+  Plug 'janko/vim-test'
+
+  "" Plug 'hrsh7th/vim-vsnip'
+  " Plug 'rafamadriz/friendly-snippets'
+  " Prettier
+  " post install (yarn install | npm install) then load plugin only for editing supported files
+  Plug 'prettier/vim-prettier', {
+    \ 'do': 'yarn install',
+    \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
+
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -164,35 +178,29 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-" " c++ syntax highlighting
-" let g:cpp_class_scope_highlight = 1
-" let g:cpp_member_variable_highlight = 1
-" let g:cpp_class_decl_highlight = 1
-
-" let g:syntastic_cpp_checkers = ['cpplint']
-" let g:syntastic_c_checkers = ['cpplint']
-" let g:syntastic_cpp_cpplint_exec = 'cpplint'
-" " The following two lines are optional. Configure it to your liking!
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-
 " This is required by Compe
 set completeopt=menuone,noselect
 set shortmess+=c
 
+" Vim-test
+let test#python#runner = 'pytest'
+
+
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
-" source $HOME/.config/nvim/plug-config/Ale.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
-" source $HOME/.config/nvim/plug-config/Coc.vim
 source $HOME/.config/nvim/plug-config/lsp-config.vim
-luafile $HOME/.config/nvim/lua/compe-config.lua
+
 
 " -------------LOAD LSP _----------
 
+luafile $HOME/.config/nvim/lua/compe-config.lua
 luafile $HOME/.config/nvim/lua/lsp-install.lua
 luafile $HOME/.config/nvim/lua/python-lsp.lua
+luafile $HOME/.config/nvim/lua/ts-lsp.lua
+luafile $HOME/.config/nvim/lua/clang-lsp.lua
+luafile $HOME/.config/nvim/lua/html-lsp.lua
 
 
 

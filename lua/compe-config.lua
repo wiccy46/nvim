@@ -19,12 +19,14 @@ require'compe'.setup {
     buffer = true;
     calc = false;
     vsnip = false;
+    ultisnips = true;
     nvim_lsp = true;
     nvim_lua = true;
     spell = false;
     tags = false;
-    snippets_nvim = false;
+    snippets_nvim = true;
     treesitter = false;
+    vim_snippets = true;
   };
 }
 local t = function(str)
