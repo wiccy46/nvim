@@ -42,9 +42,8 @@ local check_back_space = function()
     end
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
+-- Use Enter to Choose Snippet
+-- Source https://www.reddit.com/r/neovim/comments/mvk3vv/tab_completion_with_nvimcompe_and_ultisnips/
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
