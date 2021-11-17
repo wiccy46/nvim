@@ -41,7 +41,7 @@ call plug#begin(g:plugged_home)
   Plug 'joshdick/onedark.vim'
   " Using gruvbox theme
   Plug 'morhetz/gruvbox'
-  Plug 'bluz71/vim-nightfly-guicolors'
+  "
   " Space duck
   Plug 'sheerun/vim-polyglot'
   Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
@@ -63,6 +63,10 @@ call plug#begin(g:plugged_home)
 
   " Run test suites for various languages
   Plug 'janko/vim-test'
+
+  " Debugger
+  Plug 'puremourning/vimspector'
+  Plug 'szw/vim-maximizer'
 
   "" Plug 'hrsh7th/vim-vsnip'
   " Plug 'rafamadriz/friendly-snippets'
@@ -101,7 +105,7 @@ if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
 " let ayucolor="dark"
-colorscheme nightfly
+colorscheme gruvbox
 set number
 set relativenumber
 set hidden
@@ -194,6 +198,7 @@ source $HOME/.config/nvim/plug-config/CtrlP.vim
 source $HOME/.config/nvim/plug-config/Airline.vim
 source $HOME/.config/nvim/plug-config/floaterm.vim
 source $HOME/.config/nvim/plug-config/lsp-config.vim
+source $HOME/.config/nvim/plug-config/NERDTree.vim
 
 
 " -------------LOAD LSP _----------
