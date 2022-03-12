@@ -23,15 +23,14 @@ require'compe'.setup {
 
   source = {
     path = true;
-    buffer = true;
-    calc = false;
+    buffer = false;
+    calc = true;
     vsnip = false;
-    ultisnips = true;
     nvim_lsp = true;
     nvim_lua = true;
     spell = false;
-    tags = false;
-    treesitter = false;
+    tags = true;
+    treesitter = true;
     vim_snippets = true;
   };
 }

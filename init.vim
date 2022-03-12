@@ -14,13 +14,11 @@ call plug#begin(g:plugged_home)
   Plug 'chriskempson/base16-vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'herrbischoff/cobalt2.vim'
   " Better Visual Guide
   Plug 'Yggdroot/indentLine'
   " " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
-  Plug 'kabouzeid/nvim-lspinstall'
   " File Explorer
   Plug 'preservim/nerdtree'
   " " syntax check
@@ -171,8 +169,8 @@ nnoremap s i<CR><Esc>
 xnoremap p pgvy
 
 
-" Remove trailing whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
+" " Remove trailing whitespaces on save
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " tabs control
 nnoremap tn :tabnew<Space>
@@ -204,7 +202,6 @@ source $HOME/.config/nvim/plug-config/NERDTree.vim
 " -------------LOAD LSP _----------
 
 luafile $HOME/.config/nvim/lua/compe-config.lua
-luafile $HOME/.config/nvim/lua/lsp-install.lua
 luafile $HOME/.config/nvim/lua/python-lsp.lua
 luafile $HOME/.config/nvim/lua/ts-lsp.lua
 luafile $HOME/.config/nvim/lua/clang-lsp.lua
