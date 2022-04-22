@@ -19,6 +19,8 @@ call plug#begin(g:plugged_home)
   " " LSP
   Plug 'neovim/nvim-lspconfig'
   Plug 'hrsh7th/nvim-compe'
+  "" Nord
+  Plug 'arcticicestudio/nord-vim'
   " File Explorer
   Plug 'preservim/nerdtree'
   " " syntax check
@@ -103,7 +105,7 @@ if has("gui_running")
   set guicursor=n-v-c-sm:block,i-ci-ve:block,r-cr-o:blocks
 endif
 " let ayucolor="dark"
-colorscheme gruvbox
+colorscheme nord
 set number
 set relativenumber
 set hidden
