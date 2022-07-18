@@ -1,4 +1,4 @@
- " Load key mapping and which key.
+ ":Load key mapping and which key.
 source $HOME/.config/nvim/keys/mapping.vim
 source $HOME/.config/nvim/keys/which-key.vim
 if has('win32') || has('win64')
@@ -77,6 +77,9 @@ call plug#begin(g:plugged_home)
   " Markdown
   Plug 'godlygeek/tabular'
   Plug 'preservim/vim-markdown'
+
+  " Treesitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 
 call plug#end()
@@ -179,7 +182,7 @@ xnoremap p pgvy
 " autocmd BufWritePre * :%s/\s\+$//e
 
 " tabs control
-nnoremap tn :tabnew<Space>
+nnoremap tn :tabnew<CR>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
@@ -218,7 +221,11 @@ luafile $HOME/.config/nvim/lua/python-lsp.lua
 luafile $HOME/.config/nvim/lua/ts-lsp.lua
 luafile $HOME/.config/nvim/lua/clang-lsp.lua
 luafile $HOME/.config/nvim/lua/html-lsp.lua
-lua require'lspconfig'.rust_analyzer.setup({})
+luafile $HOME/.config/nvim/lua/tree-sitter.lua
+luafile $HOME/.config/nvim/lua/rust.lua
+
+cnoreabbrev RR RustRun
+
 
 
 
