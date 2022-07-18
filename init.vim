@@ -76,6 +76,10 @@ call plug#begin(g:plugged_home)
     \ 'do': 'yarn install',
     \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
+  " Markdown
+  Plug 'godlygeek/tabular'
+  Plug 'preservim/vim-markdown'
+
 
 call plug#end()
 filetype plugin indent on
@@ -146,9 +150,11 @@ set expandtab
 set autoindent
 set smartindent
 " Dont hide quotation marks in json
-autocmd Filetype json
+autocmd Filetype md
   \ let g:indentLine_setConceal = 0 |
   \ let g:vim_json_syntax_conceal = 0
+autocmd Filetype json
+  \ let g:conceallevel = 2
 augroup FileTypeSpecificAutocommands
     autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
     autocmd FileType typescript setlocal tabstop=2 softtabstop=2 shiftwidth=2
@@ -192,6 +198,12 @@ let g:UltiSnipsExpandTrigger="<c-t>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+
+" Markdown
+
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_conceal = 2
+let g:vim_markdown_conceal_code_blocks = 0
 
 " ---------LOAD CONFIGS ---------------------------
 source $HOME/.config/nvim/plug-config/CtrlP.vim
