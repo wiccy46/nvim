@@ -58,8 +58,6 @@ call plug#begin(g:plugged_home)
   Plug 'jiangmiao/auto-pairs'
   " JS highlight
   Plug 'yuezk/vim-js'
-  " Snippet
-  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
   " Run test suites for various languages
   Plug 'janko/vim-test'
@@ -220,6 +218,8 @@ luafile $HOME/.config/nvim/lua/python-lsp.lua
 luafile $HOME/.config/nvim/lua/ts-lsp.lua
 luafile $HOME/.config/nvim/lua/clang-lsp.lua
 luafile $HOME/.config/nvim/lua/html-lsp.lua
+lua require'lspconfig'.rust_analyzer.setup({})
+
 
 
 
