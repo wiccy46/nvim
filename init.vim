@@ -66,7 +66,7 @@ call plug#begin(g:plugged_home)
   Plug 'puremourning/vimspector'
   Plug 'szw/vim-maximizer'
 
-  "" Plug 'hrsh7th/vim-vsnip'
+  Plug 'hrsh7th/vim-vsnip'
   " Plug 'rafamadriz/friendly-snippets'
   " Prettier
   " post install (yarn install | npm install) then load plugin only for editing supported files
