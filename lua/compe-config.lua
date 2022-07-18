@@ -31,7 +31,7 @@ require'compe'.setup {
     spell = false;
     tags = true;
     treesitter = true;
-    vim_snippets = true;
+    vim_snippets = false;
   };
 }
 local t = function(str)
@@ -45,30 +45,6 @@ local check_back_space = function()
     else
         return false
     end
-end
-
--- Use Enter to Choose Snippet
--- Source https://www.reddit.com/r/neovim/comments/mvk3vv/tab_completion_with_nvimcompe_and_ultisnips/
-_G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn["UltiSnips#CanExpandSnippet"]() == 1 or vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-    return t "<C-R>=UtilSnips#ExpandSnippetOrJump()<CR>"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-    return t "<C-R>=UtilSnips#JumpBackwards()<CR>"
-  else
-    -- If <S-Tab> is not working in your terminal, change it to <C-h>
-    return t "<S-Tab>"
-  end
 end
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
