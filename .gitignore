@@ -3,3 +3,30 @@ session/
 
 
 .DS_Store
+# Ignore swap files
+*.swp
+*.swo
+
+# Ignore backup files
+*~
+
+# Ignore session files
+Session.vim
+
+# Ignore temporary files
+tmp/*
+
+# If using a Python virtual environment
+venv/*
+
+# If using node modules
+node_modules/*
+
+lua/node_modules/*
+
+# Ignore plugged directory
+plugged/*
+
+# Ignore auto-generated helptags
+doc/tags
+
