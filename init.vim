@@ -8,6 +8,8 @@ else
 endif
 " Plugins List
 call plug#begin(g:plugged_home)
+  " Copilot
+  Plug 'github/copilot.vim'
   " Easy comment
   Plug 'tpope/vim-commentary'
   " UI related
@@ -81,7 +83,6 @@ call plug#begin(g:plugged_home)
   " Treesitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-
 call plug#end()
 filetype plugin indent on
 " Automatically install missing plugins on startup
@@ -111,6 +112,7 @@ if has("gui_running")
 endif
 " let ayucolor="dark"
 colorscheme nord
+set encoding=utf-8
 set number
 set relativenumber
 set hidden
