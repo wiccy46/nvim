@@ -11,5 +11,18 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "<leader>e", ":NERDTreeToggle<CR>")
 
-vim.api.nvim_set_keymap('n', '<leader>', ':WhichKey \'<Space>\'<CR>', {noremap = true, silent = true})
+local map = vim.api.nvim_set_keymap
 
+local opts = { noremap = true, silent = true }
+
+map('n', '<leader>', ':WhichKey \'<Space>\'<CR>', {noremap = true, silent = true})
+
+map('v', '<leader>y', '"+y', opts)
+map('n', '<leader>Y', '"+yg_', opts)
+map('n', '<leader>y', '"+y', opts)
+map('n', '<leader>yy', '"+yy', opts)
+
+
+-- -- Copilot
+-- vim.g.copilot_no_tab_map = true
+-- vim.api.nvim_set_keymap("i", "<Right>", "copilot#Accept('<CR>')", {expr = true, noremap = true})
