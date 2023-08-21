@@ -44,5 +44,6 @@ return require('packer').startup(function(use)
 	use('vim-airline/vim-airline-themes')
     use('preservim/nerdtree')
     use('liuchengxu/vim-which-key')
+    use('martinda/Jenkinsfile-vim-syntax')
 end)
 
