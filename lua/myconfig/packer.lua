@@ -38,12 +38,12 @@ return require('packer').startup(function(use)
 		}
 	}
 	use('williamboman/mason.nvim')
-    use('github/copilot.vim')
-    use('tpope/vim-commentary')
+  use('github/copilot.vim')
+  use('tpope/vim-commentary')
 	use('vim-airline/vim-airline')
 	use('vim-airline/vim-airline-themes')
-    use('preservim/nerdtree')
-    use('liuchengxu/vim-which-key')
-    use('martinda/Jenkinsfile-vim-syntax')
+  use('preservim/nerdtree')
+  use('liuchengxu/vim-which-key')
+  use('martinda/Jenkinsfile-vim-syntax')
 end)
 

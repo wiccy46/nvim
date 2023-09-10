@@ -40,3 +40,5 @@ vim.cmd [[
 vim.api.nvim_command('au BufNewFile,BufRead Jenkinsfile setf groovy')
 vim.api.nvim_command('au BufNewFile,BufRead *.Jenkinsfile setf groovy')
 
+augroup END
+]]
