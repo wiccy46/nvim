@@ -32,5 +32,13 @@ vim.cmd [[
       autocmd FileType vue setlocal tabstop=2 softtabstop=2 shiftwidth=2
       autocmd FileType html setlocal tabstop=2 softtabstop=2 shiftwidth=2
       autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
+      autocmd FileType json setlocal tabstop=2 softtabstop=2 shiftwidth=2
   augroup END
+]]
+
+
+vim.api.nvim_command('au BufNewFile,BufRead Jenkinsfile setf groovy')
+vim.api.nvim_command('au BufNewFile,BufRead *.Jenkinsfile setf groovy')
+
+augroup END
 ]]
