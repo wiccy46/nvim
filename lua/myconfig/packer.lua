@@ -45,5 +45,12 @@ return require('packer').startup(function(use)
   use('preservim/nerdtree')
   use('liuchengxu/vim-which-key')
   use('martinda/Jenkinsfile-vim-syntax')
+
+  -- Debugger
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+
+  -- Init.lua help
+  use 'folke/neodev.nvim'
 end)
 
