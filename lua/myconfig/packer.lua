@@ -44,5 +44,10 @@ return require('packer').startup(function(use)
 	use('vim-airline/vim-airline-themes')
     use('liuchengxu/vim-which-key')
     use('preservim/nerdtree')
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use {'folke/neodev.nvim'}
+    use {"theHamsta/nvim-dap-virtual-text"}
+    use {'leoluz/nvim-dap-go'}
+    use {'mfussenegger/nvim-dap-python'}
 end)
 
