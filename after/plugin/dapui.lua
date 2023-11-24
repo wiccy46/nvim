@@ -2,6 +2,9 @@ require("dapui").setup()
 require("nvim-dap-virtual-text").setup()
 require("dap-go").setup()
 require("dap-python").setup()
+-- https://github.com/mfussenegger/nvim-dap-python
+
+require('dap-python').test_runner = 'pytest'
 
 -- Set keymaps to control the debugger
 vim.keymap.set('n', '<F10>', require 'dap'.step_over)
