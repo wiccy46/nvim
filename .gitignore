@@ -30,3 +30,4 @@ plugged/*
 # Ignore auto-generated helptags
 doc/tags
 
+plugins/packer_compiled.lua
