@@ -43,13 +43,6 @@ return require('packer').startup(function(use)
 	use('vim-airline/vim-airline')
 	use('vim-airline/vim-airline-themes')
     use('liuchengxu/vim-which-key')
-    use({
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("null-ls").setup()
-        end,
-        requires = { "nvim-lua/plenary.nvim" },
-    })
     use('preservim/nerdtree')
 end)
 
