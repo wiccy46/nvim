@@ -1,15 +1,24 @@
-local lsp = require('lsp-zero').preset({})
+local lsp_zero = require('lsp-zero')
+local lsp = require('lspconfig')
+local util = require("lspconfig/util")
 
--- lsp.on_attach(function(client, bufnr)
---   -- see :help lsp-zero-keybindings
---   -- to learn the available actions
---   lsp.default_keymaps({buffer = bufnr})
--- end)
+lsp_zero.preset('recommended')
+require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+lsp_zero.setup()
 
--- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lsp_zero.on_attach(function(client, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({buffer = bufnr})
+end)
 
-lsp.setup()
+lsp.rust_analyzer.setup({
+    filetypes = {"rust"},
+    root_dir = util.root_pattern("Cargo.toml"),
+})
+
+lsp_zero.setup_servers({'tsserver', 'gopls', 'pyright'})
+
 local cmp = require('cmp')
 
 cmp.setup({

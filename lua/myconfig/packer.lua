@@ -19,7 +19,7 @@ return require('packer').startup(function(use)
 	use('mbbill/undotree')
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v3.x',
 		requires = {
 			-- LSP Support
 			{'neovim/nvim-lspconfig'},             -- Required
