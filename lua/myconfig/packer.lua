@@ -49,5 +49,6 @@ return require('packer').startup(function(use)
     use {"theHamsta/nvim-dap-virtual-text"}
     use {'leoluz/nvim-dap-go'}
     use {'mfussenegger/nvim-dap-python'}
+    use {'rust-lang/rust.vim'}
 end)
 

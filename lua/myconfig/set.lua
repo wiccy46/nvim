@@ -34,3 +34,9 @@ vim.cmd [[
       autocmd FileType css setlocal tabstop=2 softtabstop=2 shiftwidth=2
   augroup END
 ]]
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    pattern = "*.jenkinsfile",
+    command = "set filetype=groovy",
+})
+
