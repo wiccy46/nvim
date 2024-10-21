@@ -6,3 +6,8 @@ vim.keymap.set('n', '<c-k', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j', ':wincmd j<CR>')
 vim.keymap.set('n', '<c-h', ':wincmd h<CR>')
 vim.keymap.set('n', '<c-l', ':wincmd l<CR>')
+
+-- Use tab to switch buffers
+vim.api.nvim_set_keymap('n', '<TAB>', ':bn!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-TAB>', ':bp!<CR>', { noremap = true, silent = true })
+

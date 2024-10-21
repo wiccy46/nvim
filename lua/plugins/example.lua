@@ -13,7 +13,15 @@ return {
     end,
   },
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  {
+  "ellisonleao/gruvbox.nvim",
+  config = function()
+    require("gruvbox").setup({
+      transparent_mode = true, -- Enable transparent mode
+    })
+    vim.cmd("colorscheme gruvbox") -- Apply the colorscheme
+  end,
+},
 
   -- Configure LazyVim to load gruvbox
   {
