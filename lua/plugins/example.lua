@@ -12,22 +12,26 @@ return {
       require("copilot_cmp").setup()
     end,
   },
-  -- add gruvbox
+  -- -- add gruvbox
+  -- {
+  -- "ellisonleao/gruvbox.nvim",
+  -- config = function()
+  --   require("gruvbox").setup({
+  --     transparent_mode = true, -- Enable transparent mode
+  --   })
+  --   vim.cmd("colorscheme gruvbox") -- Apply the colorscheme
+  -- end,
+  -- },
+
   {
-  "ellisonleao/gruvbox.nvim",
-  config = function()
-    require("gruvbox").setup({
-      transparent_mode = true, -- Enable transparent mode
-    })
-    vim.cmd("colorscheme gruvbox") -- Apply the colorscheme
-  end,
-},
+    "i3d/vim-jimbothemes",
+  },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "gruvbox",
+      colorscheme = "breakingbad",
     },
   },
 
