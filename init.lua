@@ -30,7 +30,6 @@ vim.cmd("colorscheme gruvbox")
 vim.o.number = true
 vim.o.signcolumn = "yes"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto comment
-
 vim.o.completeopt = "menu,noinsert,popup,fuzzy"
 
 vim.lsp.config["lua-language-server"] = {
@@ -52,7 +51,7 @@ vim.o.expandtab = true   -- Convert tabs to spaces
 
 -- Override for JS and TS: 2 spaces
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "javascript", "typescript" },
+  pattern = { "javascript", "typescript", "lua" },
   callback = function()
     vim.bo.tabstop = 2
     vim.bo.shiftwidth = 2
@@ -102,5 +101,4 @@ dap.configurations.python = {
   },
 }
 
--- Initialize DAP keybindings
 require('keymaps').setup_dap()
