@@ -68,14 +68,14 @@ return {
             },
             config = function()
               local wk = require("which-key")
-              -- Register Telescope keybindings
+              -- Register Telescope keybindings with the old format since it's working
               wk.register({
-                ["<leader>"] = { "<cmd>Telescope find_files<CR>", "Quickly open a file" },
-                f = {
-                  name = "Find", -- Group name for <leader>f mappings
+                ["<leader><leader>"] = { "<cmd>Telescope find_files<CR>", "Find File" },
+                ["<leader>f"] = { 
+                  name = "Find",
                   s = { "<cmd>Telescope live_grep<CR>", "Grep in workspace" },
                 },
-              }, { prefix = "<leader>" })
+              })
             end,
         },
         {

@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
 
-    local opts = { buffer = buf, noremap = true, silent = true }
+    local buffer = ev.buf
     local wk = require("which-key")
     wk.register({
       ["<leader>g"] = { name = "Goto" },
@@ -74,7 +74,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       ["<leader>rn"] = { vim.lsp.buf.rename, "Rename" },
       ["<leader>c"] = { name = "Code" },
       ["<leader>ca"] = { vim.lsp.buf.code_action, "Code Action" },
-    }, { buffer = buf })
+    }, { buffer = buffer })
 
   end,
 })
@@ -163,7 +163,7 @@ end
 -- DAP keybindings
 local wk = require("which-key")
 wk.register({
-  d = {
+  ["<leader>d"] = {
     name = "Debug",
     b = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
     c = { require("dap").continue, "Continue" },
@@ -174,4 +174,4 @@ wk.register({
     e = { require("dapui").eval, "Evaluate Expression" },
     q = { require("dap").terminate, "Quit Debugging" },
   },
-}, { prefix = "<leader>" })
+})
