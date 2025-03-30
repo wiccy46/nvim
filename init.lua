@@ -112,6 +112,16 @@ require('lazy').setup({
 	    -- fill any relevant options here
 	  },
     },
+
+    { "mfussenegger/nvim-dap" },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      require("dapui").setup()
+    end,
+  },
+  { "mfussenegger/nvim-dap-python" },
 })
 
 vim.cmd("colorscheme oxocarbon")
@@ -204,3 +214,72 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
+
+-- DAP Configuration
+local dap = require("dap")
+local dapui = require("dapui")
+
+-- Python setup
+require("dap-python").setup("python")
+
+-- Rust setup (using codelldb via Mason)
+dap.adapters.codelldb = {
+  type = "server",
+  port = "${port}",
+  executable = {
+    command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+    args = { "--port", "${port}" },
+  },
+}
+
+dap.configurations.rust = {
+  {
+    name = "Launch",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+  },
+}
+
+dap.configurations.python = {
+  {
+    name = "Launch file",
+    type = "python",
+    request = "launch",
+    program = "${file}",
+    pythonPath = function()
+      return "python"
+    end,
+  },
+}
+
+-- DAP UI auto-open/close
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+-- DAP keybindings
+local wk = require("which-key")
+wk.register({
+  d = {
+    name = "Debug",
+    b = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
+    c = { require("dap").continue, "Continue" },
+    o = { require("dap").step_over, "Step Over" },
+    i = { require("dap").step_into, "Step Into" },
+    u = { require("dap").step_out, "Step Out" },
+    r = { require("dap").repl.open, "Open REPL" },
+    e = { require("dapui").eval, "Evaluate Expression" },
+    q = { require("dap").terminate, "Quit Debugging" },
+  },
+}, { prefix = "<leader>" })
