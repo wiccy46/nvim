@@ -22,6 +22,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugin specifications from separate file
 require('lazy').setup(require('plugins'))
 
+-- Load keymaps
+require('keymaps').setup()
 
 vim.cmd("colorscheme gruvbox")
 
@@ -31,20 +33,6 @@ vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto c
 
 vim.o.completeopt = "menu,noinsert,popup,fuzzy"
 
-local pumMaps = {
-  ['<Tab>'] = '<C-n>',
-  ['<S-Tab>'] = '<C-p>',
-  ['<Down>'] = '<C-n>',
-  ['<Up>'] = '<C-p>',
-  ['<CR>'] = '<C-y>',
-}
-
-for insertKmap, pumKmap in pairs(pumMaps) do
-  vim.keymap.set('i', insertKmap, function()
-    return vim.fn.pumvisible() == 1 and pumKmap or insertKmap
-  end, { expr = true })
-end
-
 vim.lsp.config["lua-language-server"] = {
 	cmd = { "lua-language-server" },
 	root_markers = { ".luarc.json" },
@@ -52,32 +40,6 @@ vim.lsp.config["lua-language-server"] = {
 }
 
 vim.lsp.enable("lua-language-server")
-
-
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-
-    local buffer = ev.buf
-    local wk = require("which-key")
-    wk.register({
-      ["<leader>g"] = { name = "Goto" },
-      ["<leader>gd"] = { vim.lsp.buf.definition, "Go to Definition" },
-      ["<leader>gD"] = { vim.lsp.buf.declaration, "Go to Declaration" }, 
-      ["<leader>gr"] = { vim.lsp.buf.references, "Find References" },
-      ["<leader>K"] = { vim.lsp.buf.hover, "Show Hover" },
-      ["<leader>r"] = { name = "Refactor" },
-      ["<leader>rn"] = { vim.lsp.buf.rename, "Rename" },
-      ["<leader>c"] = { name = "Code" },
-      ["<leader>ca"] = { vim.lsp.buf.code_action, "Code Action" },
-    }, { buffer = buffer })
-
-  end,
-})
 
 vim.diagnostic.config({ virtual_lines = { current_line = true } })
 
@@ -97,15 +59,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = true
   end,
 })
-
--- System clipboard integration
-vim.keymap.set('n', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank selection to system clipboard' })
-vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line to system clipboard' })
-vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
-vim.keymap.set('n', '<leader>P', '"+P', { desc = 'Paste from system clipboard before cursor' })
-
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
 
 -- DAP Configuration
 local dap = require("dap")
@@ -149,42 +102,5 @@ dap.configurations.python = {
   },
 }
 
--- DAP UI auto-open/close
-dap.listeners.after.event_initialized["dapui_config"] = function()
-  dapui.open()
-end
-dap.listeners.before.event_terminated["dapui_config"] = function()
-  dapui.close()
-end
-dap.listeners.before.event_exited["dapui_config"] = function()
-  dapui.close()
-end
-
--- Which-key keybindings
-local wk = require("which-key")
-wk.register({
-  ["<leader>d"] = {
-    name = "Debug",
-    b = { require("dap").toggle_breakpoint, "Toggle Breakpoint" },
-    c = { require("dap").continue, "Continue" },
-    o = { require("dap").step_over, "Step Over" },
-    i = { require("dap").step_into, "Step Into" },
-    u = { require("dap").step_out, "Step Out" },
-    r = { require("dap").repl.open, "Open REPL" },
-    e = { require("dapui").eval, "Evaluate Expression" },
-    q = { require("dap").terminate, "Quit Debugging" },
-  },
-})
-
--- Tab management keybindings
-wk.register({
-  ["<leader>t"] = {
-    name = "Tabs",
-    n = { "<cmd>tabnew<CR>", "New Tab" },
-    c = { "<cmd>tabclose<CR>", "Close Tab" },
-    o = { "<cmd>tabonly<CR>", "Close Other Tabs" },
-    l = { "<cmd>tabnext<CR>", "Next Tab" },
-    h = { "<cmd>tabprevious<CR>", "Previous Tab" },
-    m = { "<cmd>tab split<CR>", "Move Buffer to New Tab" },
-  },
-})
+-- Initialize DAP keybindings
+require('keymaps').setup_dap()
