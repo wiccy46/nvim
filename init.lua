@@ -22,13 +22,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Load plugin specifications from separate file
 require('lazy').setup(require('plugins'))
 
+
 vim.cmd("colorscheme gruvbox")
 
 vim.o.number = true
 vim.o.signcolumn = "yes"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto comment
-
-
 
 vim.o.completeopt = "menu,noinsert,popup,fuzzy"
 
@@ -66,29 +65,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = buf, noremap = true, silent = true }
     local wk = require("which-key")
     wk.register({
-      g = {
-        name = "Goto",
-        d = { vim.lsp.buf.definition, "Go to Definition" },
-        D = { vim.lsp.buf.declaration, "Go to Declaration" },
-        r = { vim.lsp.buf.references, "Find References" },
-      },
-      K = { vim.lsp.buf.hover, "Show Hover" },
-      r = {
-        name = "Refactor",
-        n = { vim.lsp.buf.rename, "Rename" },
-      },
-      c = {
-        name = "Code",
-        a = { vim.lsp.buf.code_action, "Code Action" },
-      },
-    }, { prefix = "<leader>", buffer = buf })
+      ["<leader>g"] = { name = "Goto" },
+      ["<leader>gd"] = { vim.lsp.buf.definition, "Go to Definition" },
+      ["<leader>gD"] = { vim.lsp.buf.declaration, "Go to Declaration" }, 
+      ["<leader>gr"] = { vim.lsp.buf.references, "Find References" },
+      ["<leader>K"] = { vim.lsp.buf.hover, "Show Hover" },
+      ["<leader>r"] = { name = "Refactor" },
+      ["<leader>rn"] = { vim.lsp.buf.rename, "Rename" },
+      ["<leader>c"] = { name = "Code" },
+      ["<leader>ca"] = { vim.lsp.buf.code_action, "Code Action" },
+    }, { buffer = buf })
 
-    -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)          -- Go to definition
-    -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)         -- Go to declaration
-    -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)          -- Find references
-    -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)                -- Show hover documentation
-    -- vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)      -- Rename symbol
-    -- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts) -- Code action
   end,
 })
 
@@ -110,6 +97,13 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.expandtab = true
   end,
 })
+
+-- System clipboard integration
+vim.keymap.set('n', '<leader>y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set('v', '<leader>y', '"+y', { desc = 'Yank selection to system clipboard' })
+vim.keymap.set('n', '<leader>Y', '"+Y', { desc = 'Yank line to system clipboard' })
+vim.keymap.set('n', '<leader>p', '"+p', { desc = 'Paste from system clipboard' })
+vim.keymap.set('n', '<leader>P', '"+P', { desc = 'Paste from system clipboard before cursor' })
 
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { desc = 'Toggle Neo-tree' })
 
