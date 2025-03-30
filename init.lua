@@ -160,7 +160,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- DAP keybindings
+-- Which-key keybindings
 local wk = require("which-key")
 wk.register({
   ["<leader>d"] = {
@@ -173,5 +173,18 @@ wk.register({
     r = { require("dap").repl.open, "Open REPL" },
     e = { require("dapui").eval, "Evaluate Expression" },
     q = { require("dap").terminate, "Quit Debugging" },
+  },
+})
+
+-- Tab management keybindings
+wk.register({
+  ["<leader>t"] = {
+    name = "Tabs",
+    n = { "<cmd>tabnew<CR>", "New Tab" },
+    c = { "<cmd>tabclose<CR>", "Close Tab" },
+    o = { "<cmd>tabonly<CR>", "Close Other Tabs" },
+    l = { "<cmd>tabnext<CR>", "Next Tab" },
+    h = { "<cmd>tabprevious<CR>", "Previous Tab" },
+    m = { "<cmd>tab split<CR>", "Move Buffer to New Tab" },
   },
 })
