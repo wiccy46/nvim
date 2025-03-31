@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Enable inlay hints for Rust
     if client.name == "rust_analyzer" then
-      print("the buffer is " .. buffer)
       vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
     end
 

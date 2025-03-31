@@ -25,7 +25,6 @@ require('lazy').setup(require('plugins'))
 -- Load keymaps
 require('keymaps').setup()
 
-vim.cmd("colorscheme gruvbox")
 
 vim.o.number = true
 vim.o.signcolumn = "yes"
@@ -102,3 +101,4 @@ dap.configurations.python = {
 }
 
 require('keymaps').setup_dap()
+vim.cmd("colorscheme catppuccin")
