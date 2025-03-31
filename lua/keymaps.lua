@@ -25,16 +25,21 @@ for insertKmap, pumKmap in pairs(pumMaps) do
   end, { expr = true })
 end
 
--- LSP keybindings
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local buffer = ev.buf
+
+    -- Enable inlay hints for Rust
+    if client.name == "rust_analyzer" then
+      print("the buffer is " .. buffer)
+      vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+    end
 
     if client:supports_method('textDocument/completion') then
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
 
-    local buffer = ev.buf
     local wk = require("which-key")
     
     -- Use a simpler registration format
