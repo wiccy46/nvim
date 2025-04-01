@@ -39,6 +39,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
     end
 
+    -- Direct keybindings without leader
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = buffer, desc = 'Go to Definition' })
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = buffer, desc = 'Go to Declaration' })
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = buffer, desc = 'Find References' })
+
     local wk = require("which-key")
     
     -- Use a simpler registration format
