@@ -14,9 +14,34 @@ return {
     config = function()
       require("mason").setup()
       require("mason-lspconfig").setup()
+      
+      local lspconfig = require("lspconfig")
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      
       require("mason-lspconfig").setup_handlers({
         function(server_name)
-          require("lspconfig")[server_name].setup({})
+          local opts = {
+            capabilities = capabilities,
+            on_attach = function(client, bufnr)
+              -- Enable inlay hints for Rust
+              if client.name == "rust_analyzer" then
+                vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+              end
+            end
+          }
+          
+          -- Special configuration for rust-analyzer
+          if server_name == "rust_analyzer" then
+            opts.settings = {
+              ["rust-analyzer"] = {
+                checkOnSave = {
+                  command = "clippy"
+                }
+              }
+            }
+          end
+          
+          lspconfig[server_name].setup(opts)
         end,
       })
     end
@@ -131,6 +156,7 @@ return {
         deepseek = {
           __inherited_from = "openai",
           api_key_name = "DEEPSEEK_API_KEY",
+          api_key = vim.fn.getenv("DEEPSEEK_API_KEY"),
           endpoint = "https://api.deepseek.com",
           model = "deepseek-coder",
           timeout = 30000,
