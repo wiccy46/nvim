@@ -7,23 +7,6 @@
 return {
 
   {
-    "zbirenbaum/copilot-cmp",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-  -- -- add gruvbox
-  -- {
-  -- "ellisonleao/gruvbox.nvim",
-  -- config = function()
-  --   require("gruvbox").setup({
-  --     transparent_mode = true, -- Enable transparent mode
-  --   })
-  --   vim.cmd("colorscheme gruvbox") -- Apply the colorscheme
-  -- end,
-  -- },
-
-  {
     "i3d/vim-jimbothemes",
   },
 
@@ -145,16 +128,16 @@ return {
   -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
   -- would overwrite `ensure_installed` with the new value.
   -- If you'd rather extend the default config, use the code below instead:
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      -- add tsx and treesitter
-      vim.list_extend(opts.ensure_installed, {
-        "tsx",
-        "typescript",
-      })
-    end,
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   opts = function(_, opts)
+  --     -- add tsx and treesitter
+  --     vim.list_extend(opts.ensure_installed, {
+  --       "tsx",
+  --       "typescript",
+  --     })
+  --   end,
+  -- },
 
   -- the opts function can also be used to change the default opts:
   {
