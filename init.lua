@@ -29,7 +29,7 @@ require('keymaps').setup()
 vim.o.number = true
 vim.o.signcolumn = "yes"
 vim.cmd([[autocmd FileType * set formatoptions-=ro]]) -- disable new line auto comment
-vim.o.completeopt = "menu,noinsert,popup,fuzzy"
+vim.o.completeopt = "menuone,noselect"
 
 vim.lsp.config["lua-language-server"] = {
 	cmd = { "lua-language-server" },

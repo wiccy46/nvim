@@ -17,6 +17,7 @@ local pumMaps = {
   ['<Down>'] = '<C-n>',
   ['<Up>'] = '<C-p>',
   ['<CR>'] = '<C-y>',
+  ['<C-Space>'] = '<C-x><C-o>', -- Manually trigger completion
 }
 
 for insertKmap, pumKmap in pairs(pumMaps) do
@@ -36,7 +37,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+      vim.lsp.completion.enable(true, client.id, ev.buf, { 
+        autotrigger = true,
+        trigger_on_insert = true,
+        trigger_characters = {}, -- Empty array means trigger on all characters
+        debounce = 50 -- Lower value for faster triggering
+      })
     end
 
     -- Direct keybindings without leader
