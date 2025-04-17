@@ -6,17 +6,12 @@
 -- * override the configuration of LazyVim plugins
 return {
 
-
-  -- Configure LazyVim to load gruvbox
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "breakingbad",
+      colorscheme = "catppuccin",
     },
-  },
-
-  {
-    "i3d/vim-jimbothemes",
   },
 
   -- -- change trouble config
@@ -340,7 +335,7 @@ return {
         model = "gpt-4.1",
         timeout = 30000, -- in ms
         temperature = 0,
-        max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+        -- max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
         --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
       },
     },
