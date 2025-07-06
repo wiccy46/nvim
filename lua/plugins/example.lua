@@ -97,6 +97,16 @@ return {
         -- ["*"] = function(server, opts) end,
       },
     },
+
+    -- disable diagnostics for markdown buffers
+    config = function()
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "markdown",
+        callback = function()
+          vim.diagnostic.enable(false)
+        end,
+      })
+    end,
   },
 
   -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
