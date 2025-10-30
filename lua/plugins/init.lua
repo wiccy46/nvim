@@ -4,6 +4,34 @@ return {
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+        local cmp = require("cmp")
+        opts.mapping = cmp.mapping.preset.insert({
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        })
+        return opts
+    end,
+  },
+  {
+    "rose-pine/nvim",
+    name = "rose-pine",
+    config = function()
+      vim.cmd("colorscheme rose-pine")
+    end
+  },
+
+  {
+    "github/copilot.vim",
+    event = "VeryLazy",
+    config = function()
+      vim.g.copilot_enabled = true
+    end,
+  },
 
   -- These are some examples, uncomment them if you want to see them work!
   {
@@ -85,16 +113,4 @@ return {
   },
 
 
-  -- test new blink
-  -- { import = "nvchad.blink.lazyspec" },
-
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
 }

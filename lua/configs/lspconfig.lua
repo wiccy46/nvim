@@ -1,12 +1,10 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls"  }
+local servers = { "html", "cssls" }
 vim.lsp.enable(servers)
 
-
-local lspconfig = require "lspconfig"
-
-lspconfig.pyright.setup {
+-- Configure pyright using the new vim.lsp.config API
+vim.lsp.config('pyright', {
   settings = {
     python = {
       analysis = {
@@ -29,7 +27,10 @@ lspconfig.pyright.setup {
       end
     end
   end,
-}
+})
+
+-- Enable pyright
+vim.lsp.enable('pyright')
 
 vim.diagnostic.config({
   virtual_text = true,  -- Show inline diagnostics
