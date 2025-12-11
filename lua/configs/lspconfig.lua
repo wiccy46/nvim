@@ -1,6 +1,6 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls" }
+local servers = { "html", "cssls", "clangd" }
 vim.lsp.enable(servers)
 
 -- Configure pyright using the new vim.lsp.config API

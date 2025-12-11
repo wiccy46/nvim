@@ -111,6 +111,14 @@ return {
       })
     end
   },
-
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      git = {
+        -- Set 'ignore' to false to show files listed in .gitignore
+        ignore = false,
+      },
+    },
+  },
 
 }
