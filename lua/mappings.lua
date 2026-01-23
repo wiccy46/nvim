@@ -1,4 +1,17 @@
 require "nvchad.mappings"
+
+-- Remove NvChad's window navigation to let tmux-navigator handle it
+vim.keymap.del("n", "<C-h>")
+vim.keymap.del("n", "<C-j>")
+vim.keymap.del("n", "<C-k>")
+vim.keymap.del("n", "<C-l>")
+
+-- Set up tmux-navigator keybindings
+vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>")
+
 local map = vim.keymap.set
 local wk = require("which-key")
 wk.add({
