@@ -69,3 +69,13 @@ map("n", "<Leader>de", "<cmd>lua require'dap'.terminate()<CR>", { desc = "Debugg
 map("n", "<Leader>dr", "<cmd>lua require'dap'.run_last()<CR>", { desc = "Debugger run last" })
 -- rustaceanvim
 map("n", "<Leader>dt", "<cmd>lua vim.cmd('RustLsp testables')<CR>", { desc = "Debugger testables" })
+
+
+-- Copy current line's diagnostic to clipboard
+vim.keymap.set('n', '<leader>cp', function()
+  local diagnostics = vim.diagnostic.get_curr_pos()
+  if #diagnostics > 0 then
+    vim.fn.setreg('+', diagnostics[1].message)
+    print("Diagnostic copied to clipboard!")
+  end
+end, { desc = "Copy diagnostic to clipboard" })
