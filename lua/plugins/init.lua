@@ -124,6 +124,25 @@ return {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter",
+    version = "v0.9.3",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleStat" },
+    build = ":TSUpdate",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "html", "css"
+      },
+      highlight = { enable = true },
+      indent = { enable = true },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
+
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
