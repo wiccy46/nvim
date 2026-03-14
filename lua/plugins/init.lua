@@ -147,4 +147,12 @@ return {
     lazy = false,
   },
 
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true, -- Shows who (Claude!) changed the line in ghost text
+      signcolumn = true,
+      numhl = true, -- Highlights the line number for changed lines
+    }
+  },
 }
