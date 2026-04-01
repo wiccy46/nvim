@@ -18,7 +18,22 @@ wk.add({
   { "<leader>d", group = "Debugger" },
   { "<leader>r", group = "Renamer" },
   { "<leader>l", group = "Diagnostics" },
+  { "<leader>h", group = "Harpoon" },
 })
+
+map("n", "<leader>ha", function() require("harpoon"):list():add() end, { desc = "Harpoon Add" })
+map("n", "<leader>he", function()
+  local harpoon = require("harpoon")
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon Menu" })
+map("n", "<C-e>", function()
+  local harpoon = require("harpoon")
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon Menu" })
+map("n", "<leader>h1", function() require("harpoon"):list():select(1) end, { desc = "Harpoon 1" })
+map("n", "<leader>h2", function() require("harpoon"):list():select(2) end, { desc = "Harpoon 2" })
+map("n", "<leader>h3", function() require("harpoon"):list():select(3) end, { desc = "Harpoon 3" })
+map("n", "<leader>h4", function() require("harpoon"):list():select(4) end, { desc = "Harpoon 4" })
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
@@ -53,6 +68,10 @@ map("n", "gl", function()
   vim.diagnostic.open_float()
 end, { desc = "Show diagnostic" })
 
+map("n", "<Leader>ff", function()
+  require('telescope.builtin').find_files({ previewer = false })
+end, { desc = "Telescope Find Files (no preview)" })
+
 -- Nvim DAP
 map("n", "<Leader>dl", "<cmd>lua require'dap'.step_into()<CR>", { desc = "Debugger step into" })
 map("n", "<Leader>dj", "<cmd>lua require'dap'.step_over()<CR>", { desc = "Debugger step over" })
@@ -79,3 +98,16 @@ vim.keymap.set('n', '<leader>cp', function()
     print("Diagnostic copied to clipboard!")
   end
 end, { desc = "Copy diagnostic to clipboard" })
+
+
+require("tabme").setup({
+    keybindings = {
+        pin = "<leader>tp",
+        focus = "<leader>tf",
+    },
+    tabline = false, -- Whether to override the tabline
+    highlight = {
+        link = "Title", -- Highlight group for the pinned tab
+        bold = true,
+    },
+})

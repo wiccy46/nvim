@@ -125,20 +125,19 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    version = "v0.9.3",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleStat" },
     build = ":TSUpdate",
     opts = {
       ensure_installed = {
         "vim", "lua", "vimdoc",
-        "html", "css"
+        "html", "css", "python", "cpp"
       },
       highlight = { enable = true },
       indent = { enable = true },
     },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter.config").setup(opts)
     end,
   },
 
@@ -155,4 +154,24 @@ return {
       numhl = true, -- Highlights the line number for changed lines
     }
   },
+
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("harpoon"):setup()
+    end,
+  },
+
+  {
+    "wiccy46/tabme",
+    config = function()
+        require("tabme").setup({
+            tabline = true, -- Enable custom tabline to see the pin
+        })
+    end,
+  },
+
+
 }
